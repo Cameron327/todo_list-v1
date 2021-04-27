@@ -36,7 +36,7 @@ app.get("/", function (req, res) {
       day = "Saturday";
       break;
     default:
-      console.log("Error: current day is equal to: " + currentDay)
+      console.log("Error: Current day number is equal to: " + currentDay)
   }
 
   // do all of the processing in the if/else and then put it in once
