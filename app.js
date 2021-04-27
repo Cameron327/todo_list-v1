@@ -12,7 +12,7 @@ app.get("/", function(req, res){
   var today = new Date();
   var currentDay = today.getDay();
 
-  if (currentDay === 0 || currentday === 5) {
+  if (currentDay === 0 || currentday === 6) {
     res.sendFile(__dirname + "/weekend.html");
   }
 });
