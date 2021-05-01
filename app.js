@@ -6,25 +6,44 @@ let ejs = require("ejs");
 
 const app = express();
 
+let items = ["Milk", "Eggs", "Fruit"];
+
 app.set("view engine", "ejs");
 
-app.get("/", function (req, res) {
-  var today = new Date();
-  var currentDay = today.getDay();
+// this is to use the body parser for the post request
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
-  var options = {
+app.get("/", function (req, res) {
+  let today = new Date();
+  let currentDay = today.getDay();
+
+  let options = {
     weekday: "long",
     day: "numeric",
     month: "long"
   };
 
-  var day = today.toLocaleDateString("en-US", options)
+  let day = today.toLocaleDateString("en-US", options)
 
   // do all of the processing in the break statements and then put it in once
   // Here, the first argument is the name of the ejs file and the second arg is the variable and value key pair
-  res.render("list", { kindOfDay: day });
+  res.render("list", { kindOfDay: day, newListItems: items });
   // in this funciton, I used different variable names for the day to be very explicit on what is being passed to where
 });
+
+app.post("/", function (req, res) {
+  let item = req.body.newItem;
+  items.push(item);
+
+  // use redirect for the post method and render for the get method
+  // you can't use render here because when the get method is loaded first, it won't have a value to put into the ejs variable in our html page yet
+  // in addition, you would also have to create the list variable at the top of the file and not here (for scope reasons)
+  // Use an array so that we don't just keep overriding the newest item
+  // So, ititialize it at the top with nothing
+  res.redirect("/");
+});
+
 
 app.listen(3000, function () {
   console.log("Server started on port 3000!");
