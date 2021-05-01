@@ -39,7 +39,8 @@ app.get("/", function (req, res) {
       console.log("Error: Current day number is equal to: " + currentDay)
   }
 
-  // do all of the processing in the if/else and then put it in once
+  // do all of the processing in the break statements and then put it in once
+  // Here, the first argument is the name of the ejs file and the second arg is the variable and value key pair
   res.render("list", { kindOfDay: day });
   // in this funciton, I used different variable names for the day to be very explicit on what is being passed to where
 });
