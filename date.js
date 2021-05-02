@@ -5,28 +5,28 @@
 // Look at the node docs on modules
 console.log(module);
 
-module.exports.getDate = function() {
-  let today = new Date();
+exports.getDate = function() {
+  const today = new Date();
 
-  let options = {
+  const options = {
     weekday: "long",
     day: "numeric",
     month: "long",
   };
 
-  let day = today.toLocaleDateString("en-US", options);
+  const day = today.toLocaleDateString("en-US", options);
 
   return day;
 }
 
-module.exports.getDay = function() {
-  let today = new Date();
+exports.getDay = function() {
+  const today = new Date();
 
-  let options = {
+  const options = {
     weekday: "long"
   };
 
-  let day = today.toLocaleDateString("en-US", options);
+  const day = today.toLocaleDateString("en-US", options);
 
   return day;
 }

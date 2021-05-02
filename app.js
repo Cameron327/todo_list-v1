@@ -8,8 +8,8 @@ const date = require(__dirname + "/date.js");
 
 const app = express();
 
-let items = ["Milk", "Eggs", "Fruit"];
-let workItems = [];
+const items = ["Milk", "Eggs", "Fruit"];
+const workItems = [];
 
 app.set("view engine", "ejs");
 
