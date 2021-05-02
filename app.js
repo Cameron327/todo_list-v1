@@ -3,6 +3,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 let ejs = require("ejs");
+// require from our own date module
+const date = require(__dirname + "/date.js");
 
 const app = express();
 
@@ -16,16 +18,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  let today = new Date();
-  let currentDay = today.getDay();
 
-  let options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long"
-  };
+  // This was all put into our date.js module
 
-  let day = today.toLocaleDateString("en-US", options)
+  // let today = new Date();
+  // let currentDay = today.getDay(); // This was cleared a long time ago with the switch statement
+
+  // let options = {
+  //   weekday: "long",
+  //   day: "numeric",
+  //   month: "long"
+  // };
+
+  // let day = today.toLocaleDateString("en-US", options)
+
+  // here, we call our own module
+  let day = date.getDate();
 
   // do all of the processing in the break statements and then put it in once
   // Here, the first argument is the name of the ejs file and the second arg is the variable and value key pair
